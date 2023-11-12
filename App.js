@@ -1,11 +1,14 @@
 import { NativeRouter } from 'react-router-native';
-import Main from "./src/components/Main.jsx"
+import Main from "./Main.jsx"
+import { NativeBaseProvider } from 'native-base';
 
 export default function App() {
   return (
-<NativeRouter>
-  <Main></Main>
-</NativeRouter>
+    <NativeRouter>
+      <NativeBaseProvider>
+        <Main></Main>
+      </NativeBaseProvider>
+    </NativeRouter>
   );
 }
 
