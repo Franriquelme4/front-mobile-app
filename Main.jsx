@@ -4,6 +4,9 @@ import { Route, Navigate, Routes } from 'react-router-native';
 import Categorias from "./src/screens/Categorias";
 import Home from "./src/screens/Home";
 import { View } from "native-base";
+import Pacientes from "./src/screens/Pacientes";
+import Doctores from "./src/screens/Doctores";
+import ReservaDeTurnos from "./src/screens/ReservaDeTurnos";
 
 const Main = () => {
     return (
@@ -12,6 +15,9 @@ const Main = () => {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/categorias' element={<Categorias />} />
+                    <Route path='/pacientes' element={<Pacientes />} />
+                    <Route path='/doctores' element={<Doctores />} />
+                    <Route path='/reserva-turnos' element={<ReservaDeTurnos />} />
                     <Route path='*' element={<Navigate to='/'/>} />
                 </Routes>
             </View>
