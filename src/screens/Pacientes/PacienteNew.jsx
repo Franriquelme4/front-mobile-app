@@ -22,10 +22,7 @@ export default function PacienteNew() {
     };
 
     savePersona(persona);
-    console.log("MARIO ME CHUPA EL CULO");
     navigation('/pacientes');
-    console.log("MARIO ME CHUPA EL CULO");
-
   };
 
   return (

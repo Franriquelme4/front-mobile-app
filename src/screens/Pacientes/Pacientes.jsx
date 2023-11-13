@@ -2,11 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Heading, View, Text, Button, ScrollView } from 'native-base';
 import { Link } from 'react-router-native';
 import BackToMenu from '../../components/BackToMenu';
-import { getPersonas } from '../../services/pacientesService';
-
+import { getPersonas,eliminarPersona } from '../../services/pacientesService';
+import PacienteEditarModal from './PacienteEditarModal';
 export default function Pacientes() {
   const [personas, setPersonas] = useState([]);
-
+  const handleModalClose = () => {
+    // Cierra la modal
+    setModalVisible(false);
+    // Limpia la persona seleccionada
+    setSelectedPersona(null);
+  };
+  const handleEditar = (persona) => {
+    // Abre la modal y guarda la persona seleccionada
+    setSelectedPersona(persona);
+    setModalVisible(true);
+  };
   useEffect(() => {
     const fetchPersonas = async () => {
       const data = await getPersonas();
@@ -15,7 +25,9 @@ export default function Pacientes() {
 
     fetchPersonas();
   }, []);
-
+  const handleEliminar = async () => {
+    await eliminarPersona(persona.id);
+  };
   return (
     <ScrollView>
       <View>
@@ -36,11 +48,26 @@ export default function Pacientes() {
               <Text>Email: {persona.email}</Text>
               <Text>Cédula: {persona.cedula}</Text>
               <Text>Es Doctor: {persona.esDoctor ? 'Sí' : 'No'}</Text>
+              <Button  colorScheme="primary" title="Editar" onPress={() => handleEditar(persona)}>
+                Editar
+              </Button>
+
+              <Button  colorScheme="primary" title="Eliminar" onPress={() => eliminarPersona(persona.id)} color="red" >
+                Eliminar
+              </Button>
             </View>
           ))}
         </View>
         
       </View>
+      <PacienteEditarModal
+        isOpen={modalVisible}
+        onClose={handleModalClose}
+        persona={selectedPersona}
+        onEdit={handleModalClose}
+      />
     </ScrollView>
+    
+
   );
 }
