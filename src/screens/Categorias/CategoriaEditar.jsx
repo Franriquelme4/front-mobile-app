@@ -24,8 +24,8 @@ export default function CategoriaEditar() {
             console.error('Error al cargar la categoría:', error);
         }
     };
-    const submitForm = () => {
-        editCategoria({id,nombre:categoryName})
+    const submitForm = async () => {
+        await editCategoria({id,nombre:categoryName})
        navigation("/categorias");
     }
     return <View>

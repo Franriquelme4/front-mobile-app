@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Heading, View, Text, Button, ScrollView } from 'native-base';
-import { Link } from 'react-router-native';
+import { Link, useNavigate } from 'react-router-native';
 import BackToMenu from '../../components/BackToMenu';
 import { getPersonas } from '../../services/pacientesService';
 
 export default function Pacientes() {
   const [personas, setPersonas] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPersonas = async () => {
@@ -21,11 +22,9 @@ export default function Pacientes() {
       <View>
         <BackToMenu />
         <Heading>Lista de Pacientes/Doctores</Heading>
-        <Link to="/pacientes/agregar">
-          <Button mt={4} colorScheme="primary">
-            Agregar Paciente/Doctor
-          </Button>
-        </Link>
+        <Button mt={4} colorScheme="primary" onPress={() => navigate('/pacientes/agregar')}>
+          Agregar Paciente/Doctor
+        </Button>
 
         <View p={2}>
           {personas.map((persona) => (

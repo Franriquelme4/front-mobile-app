@@ -1,7 +1,6 @@
 import { Button, View, Heading, Text, ScrollView, VStack } from "native-base";
 import BackToMenu from "../../components/BackToMenu";
-import { Link } from "react-router-native";
-import { FlatList, TouchableWithoutFeedback } from 'react-native'
+import { useNavigate } from "react-router-native";
 import { deleteById, getCategoria } from "../../services/categoriasService";
 import { useEffect, useState } from "react";
 import CategoriaItem from "./CategoriaItem";
@@ -11,8 +10,10 @@ export default function Categorias() {
 
     const [categoryName, setCategoryName] = useState('');
     const [categorias, setCategorias] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        console.log('se monto')
         async function fetchCategorias() {
             const categoriasData = await getCategoria();
             if (categoriasData) {
@@ -35,10 +36,8 @@ export default function Categorias() {
         <BackToMenu></BackToMenu>
         <Heading>Categorias</Heading>
         <View p={2}>
-            <Button rounded borderRadius={2}>
-                <Link to="/categorias/agregar" component={TouchableWithoutFeedback}>
-                    <Text> Agregar Categoria</Text>
-                </Link>
+            <Button rounded borderRadius={2} onPress={() => navigate('/categorias/agregar')}>
+                Agregar Categoria
             </Button>
         </View>
         <View>

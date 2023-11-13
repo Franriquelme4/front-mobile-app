@@ -1,9 +1,10 @@
 import { ArrowForwardIcon, Text, Flex, View, Button } from 'native-base'
 import { TouchableWithoutFeedback } from 'react-native'
-import { Link } from 'react-router-native'
+import { Link, useNavigate } from 'react-router-native'
 import { deleteById } from '../../services/categoriasService'
 
 export default function CategoriaItem({ title, id, onDelete }) {
+    const navigate = useNavigate();
 
     // const eliminarCategoria = ()=>{
     //     console.log(id,"id")
@@ -28,10 +29,8 @@ export default function CategoriaItem({ title, id, onDelete }) {
         >
             <Text>{title}</Text>
             <Flex>
-                <Button mb={1} size='xs'>
-                <Link to={"/categorias/editar/"+id} component={TouchableWithoutFeedback}>
-                    <Text> Editar</Text>
-                </Link>                
+                <Button mb={1} size='xs' onPress={() => navigate("/categorias/editar/"+id)}>
+                    Editar  
                 </Button>
                 <Button colorScheme='danger' size="xs" onPress={eliminarCategoria}>Eliminar</Button>
             </Flex>
