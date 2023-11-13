@@ -55,7 +55,6 @@ const storeData = async (value) => {
   export const getCategoriaById = async (id) => {
     try {
       const categorias = await getData();
-      console.log(categorias,'Categoria');
       const categoria = categorias.find((categoria) =>{
         if (categoria.id == id) {
           return categoria
