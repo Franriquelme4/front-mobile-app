@@ -8,6 +8,7 @@ import Pacientes from "./src/screens/Pacientes";
 import Doctores from "./src/screens/Doctores";
 import ReservaDeTurnos from "./src/screens/ReservaDeTurnos";
 import CategoriaNew from "./src/screens/Categorias/CategoriaNew";
+import CategoriaEditar from "./src/screens/Categorias/CategoriaEditar";
 
 const Main = () => {
     return (
@@ -17,6 +18,7 @@ const Main = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/categorias' element={<Categorias />} />
                     <Route path='/categorias/agregar' element={<CategoriaNew />} />
+                    <Route path='/categorias/editar/:id' element={<CategoriaEditar />} />
                     <Route path='/pacientes' element={<Pacientes />} />
                     <Route path='/doctores' element={<Doctores />} />
                     <Route path='/reserva-turnos' element={<ReservaDeTurnos />} />

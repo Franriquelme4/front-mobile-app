@@ -1,8 +1,8 @@
 import { Button, View, Heading, Text, ScrollView, VStack } from "native-base";
 import BackToMenu from "../../components/BackToMenu";
 import { Link } from "react-router-native";
-import { TouchableWithoutFeedback } from 'react-native'
-import { getCategoria } from "../../services/categoriasService";
+import { FlatList, TouchableWithoutFeedback } from 'react-native'
+import { deleteById, getCategoria } from "../../services/categoriasService";
 import { useEffect, useState } from "react";
 import CategoriaItem from "./CategoriaItem";
 
@@ -24,6 +24,13 @@ export default function Categorias() {
     }, []); // Se ejecutará solo una vez al montar el componente
 
 
+    const handleDeleteCategoria = async (id) => {
+        console.log(id, 'delete');
+        await deleteById(id);
+        const updatedCategorias = await getCategoria();
+        setCategorias(updatedCategorias);
+    }
+
     return (<View>
         <BackToMenu></BackToMenu>
         <Heading>Categorias</Heading>
@@ -40,7 +47,7 @@ export default function Categorias() {
                     <View space={2} mt="5">
                         {categorias.map((categoria) => (
                             <View>
-                                   <CategoriaItem title={categoria.nombre}></CategoriaItem>
+                                   <CategoriaItem title={categoria.nombre} id={categoria.id} onDelete={() => handleDeleteCategoria(categoria.id)}></CategoriaItem>
                             </View>
                         ))}
                     </View>
