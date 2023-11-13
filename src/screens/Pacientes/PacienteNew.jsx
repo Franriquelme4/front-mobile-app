@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Heading, View, FormControl, Input, Button, VStack, Checkbox } from 'native-base';
 import BackToMenu from '../../components/BackToMenu';
 import { savePersona } from '../../services/pacientesService';
-
+import {useNavigate} from 'react-router-native';
 export default function PacienteNew() {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
@@ -10,7 +10,7 @@ export default function PacienteNew() {
   const [email, setEmail] = useState('');
   const [cedula, setCedula] = useState('');
   const [esDoctor, setEsDoctor] = useState(false);
-
+  const navigation = useNavigate(); 
   const submitForm = () => {
     const persona = {
       nombre,
@@ -22,7 +22,10 @@ export default function PacienteNew() {
     };
 
     savePersona(persona);
-    // Puedes redirigir a la página de lista de pacientes/doctores o realizar otras acciones aquí
+    console.log("MARIO ME CHUPA EL CULO");
+    navigation('/pacientes');
+    console.log("MARIO ME CHUPA EL CULO");
+
   };
 
   return (
