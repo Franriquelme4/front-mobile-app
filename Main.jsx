@@ -1,13 +1,15 @@
 import React from "react";
 import { SafeAreaView } from "react-native";
-import { Route, Navigate, Routes } from 'react-router-native';
+import { Route, Navigate, Routes, Switch } from 'react-router-native';
 import Categorias from "./src/screens/Categorias/Categorias";
 import Home from "./src/screens/Home";
 import { View } from "native-base";
-import Pacientes from "./src/screens/Pacientes";
+import Pacientes from "./src/screens/Pacientes/Pacientes";
 import Doctores from "./src/screens/Doctores";
 import ReservaDeTurnos from "./src/screens/ReservaDeTurnos";
 import CategoriaNew from "./src/screens/Categorias/CategoriaNew";
+import CategoriaEditar from "./src/screens/Categorias/CategoriaEditar";
+import PacienteNew from "./src/screens/Pacientes/PacienteNew";
 
 const Main = () => {
     return (
@@ -17,7 +19,9 @@ const Main = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/categorias' element={<Categorias />} />
                     <Route path='/categorias/agregar' element={<CategoriaNew />} />
+                    <Route path='/categorias/editar/:id' element={<CategoriaEditar />} />
                     <Route path='/pacientes' element={<Pacientes />} />
+                    <Route path="/pacientes/agregar" element={<PacienteNew />} />
                     <Route path='/doctores' element={<Doctores />} />
                     <Route path='/reserva-turnos' element={<ReservaDeTurnos />} />
                     <Route path='*' element={<Navigate to='/'/>} />

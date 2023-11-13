@@ -26,16 +26,63 @@ const storeData = async (value) => {
     }
   };
 
-  const getData = async () => {
+  export const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('categoria');
-      console.log(jsonValue,'Json value');
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
+      return jsonValue ? JSON.parse(jsonValue) : [];
     } catch (e) {
         console.log(e);
     }
   };
 
-  export const getCategoria = async()=>{
+  export const getCategoria = async () => {
     return await getData();
   }
+
+  export const deleteById = async (id) => {
+    try {
+      let categorias = await getData();
+      if (categorias) {
+        categorias = categorias.filter((categoria) => categoria.id !== id);
+        await storeData(categorias);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+
+  export const getCategoriaById = async (id) => {
+    try {
+      const categorias = await getData();
+      const categoria = categorias.find((categoria) =>{
+        if (categoria.id == id) {
+          return categoria
+        }
+       
+      });
+      return categoria || {};
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  };
+
+  export const editCategoria = async (editedCategoria) => {
+    try {
+      let categorias = await getData();
+      if (categorias) {
+        const index = categorias.findIndex(
+          (categoria) => categoria.id == editedCategoria.id
+        );
+  
+        if (index !== -1) {
+          categorias[index] = editedCategoria;
+          await storeData(categorias);
+        }
+      }
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  };
