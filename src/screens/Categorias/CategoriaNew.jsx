@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { Heading, Text, View, FormControl, Stack, Input, Button, VStack } from "native-base"
 import BackToMenu from "../../components/BackToMenu"
 import { getCategoria, getData, saveCategoria } from '../../services/categoriasService';
+import { useNavigate } from 'react-router-native';
 
 
 export default function CategoriaNew() {
   const [categoryName, setCategoryName] = useState('');
-
+  const navigation = useNavigate();
   const submitForm = () => {
     if (categoryName != "") {
       saveCategoria(categoryName);
+      navigation("/categorias");
     }
   }
   return <View>

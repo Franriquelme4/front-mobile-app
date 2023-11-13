@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Heading, Text, View, FormControl, Stack, Input, Button, VStack } from "native-base"
 import BackToMenu from "../../components/BackToMenu"
 import { editCategoria, getCategoria, getCategoriaById, getData, saveCategoria } from '../../services/categoriasService';
-import { useParams } from 'react-router-native';
+import { useNavigate, useParams } from 'react-router-native';
 
 export default function CategoriaEditar() {
     const [categoryName, setCategoryName] = useState('');
     const { id } = useParams();
+    const navigation = useNavigate(); 
 
     useEffect(() => {
         // Cargar la categoría actual utilizando el ID cuando el componente se monta
@@ -25,6 +26,7 @@ export default function CategoriaEditar() {
     };
     const submitForm = () => {
         editCategoria({id,nombre:categoryName})
+       navigation("/categorias");
     }
     return <View>
         <BackToMenu></BackToMenu>
