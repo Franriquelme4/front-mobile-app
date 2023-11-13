@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Heading, Text, View, FormControl, Stack, Input, Button,VStack } from "native-base"
 import BackToMenu from "../../components/BackToMenu"
-import { getCategoria, saveCategoria } from '../../services/categoriasService';
+import { getCategoria, getData, saveCategoria } from '../../services/categoriasService';
 
 export default function CategoriaNew() {
     const [categoryName, setCategoryName] = useState('');
@@ -10,7 +10,7 @@ export default function CategoriaNew() {
 const submitForm = ()=>{
     // console.log("Category Name:", categoryName);
     saveCategoria(categoryName);
-    console.log(getCategoria(),"Categorias")
+    console.log(getData(),"Categorias")
 }
     return <View>
         <BackToMenu></BackToMenu>

@@ -26,16 +26,16 @@ const storeData = async (value) => {
     }
   };
 
-  const getData = async () => {
+  export const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('categoria');
-      console.log(jsonValue,'Json value');
-      return jsonValue != null ? JSON.parse(jsonValue) : null;
+      console.log(jsonValue,'json value');
+      return jsonValue ? JSON.parse(jsonValue) : [];
     } catch (e) {
         console.log(e);
     }
   };
 
-  export const getCategoria = async()=>{
+  export const getCategoria = async () => {
     return await getData();
   }
