@@ -90,7 +90,10 @@ export default function FichaClinicaNew() {
                         }}
                         onValueChange={(itemValue) => handleInputChange('turno', itemValue)}
                     >
-                        {/* Aquí irían tus turnos */}
+                        {turnos.map(turno => (
+                            <Select.Item key={turno.id} label={turno.nombre} value={turno.id} />
+                        ))
+                        }
                     </Select>
                 </FormControl>
 
