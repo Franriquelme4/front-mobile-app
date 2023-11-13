@@ -7,6 +7,7 @@ import { View } from "native-base";
 import Pacientes from "./src/screens/Pacientes";
 import Doctores from "./src/screens/Doctores";
 import ReservaDeTurnos from "./src/screens/ReservaDeTurnos";
+import CategoriaNew from "./src/screens/Categorias/CategoriaNew";
 
 const Main = () => {
     return (
@@ -15,6 +16,7 @@ const Main = () => {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/categorias' element={<Categorias />} />
+                    <Route path='/categorias/agregar' element={<CategoriaNew />} />
                     <Route path='/pacientes' element={<Pacientes />} />
                     <Route path='/doctores' element={<Doctores />} />
                     <Route path='/reserva-turnos' element={<ReservaDeTurnos />} />
