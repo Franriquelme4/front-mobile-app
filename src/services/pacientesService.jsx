@@ -12,7 +12,6 @@ export const savePersona = async (persona) => {
   } else {
     personas.push(newPersona);
   }
-
   await storeData(personas);
 };
 
