@@ -4,12 +4,8 @@ export const menuItems = [
       route: "/categorias"
     },
     {
-      name: "Pacientes",
+      name: "Doctores/Pacientes",
       route: "/pacientes"
-    },
-    {
-      name: "Doctores",
-      route: "/doctores"
     },
     {
       name: "Reserva de Turnos",
