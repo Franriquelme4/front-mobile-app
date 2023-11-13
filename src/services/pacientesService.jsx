@@ -51,6 +51,16 @@ export const editarPersona = async (persona) => {
   }
 };
 
+export const getPersona = async (id) => {
+  let personas = await getPersonas();
+  if (!personas) {
+    return; // No hay personas para editar
+  }
+
+  const index = personas.findIndex((p) => p.id === id);
+  return personas[index];
+};
+
 export const eliminarPersona = async (id) => {
   let personas = await getPersonas();
   if (!personas) {

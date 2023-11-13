@@ -6,6 +6,8 @@ import { getPersonas,eliminarPersona } from '../../services/pacientesService';
 import PacienteEditarModal from './PacienteEditarModal';
 export default function Pacientes() {
   const [personas, setPersonas] = useState([]);
+  const [selectedPersona, setSelectedPersona] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
   const navigate = useNavigate();
   const navigation = useNavigate()
   const handleModalClose = () => {

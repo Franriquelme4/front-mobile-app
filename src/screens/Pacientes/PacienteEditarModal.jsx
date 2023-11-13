@@ -3,7 +3,7 @@ import { Modal, View, Text, Button, TextInput } from 'react-native';
 import { editarPersona } from '../../services/pacientesService';
 
 const PacienteEditarModal = ({ isOpen, onClose, persona, onEdit }) => {
-  const [nombre, setNombre] = useState(persona.nombre);
+  const [nombre, setNombre] = useState(persona?.nombre);
   // Agrega más estados según tus necesidades
 
   const handleGuardar = async () => {
