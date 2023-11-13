@@ -38,6 +38,28 @@ export const getPacientes = async () => {
   return personas.filter((persona) => !persona.esDoctor);
 }
 
+export const editarPersona = async (persona) => {
+  let personas = await getPersonas();
+  if (!personas) {
+    return; // No hay personas para editar
+  }
+
+  const index = personas.findIndex((p) => p.id === persona.id);
+  if (index !== -1) {
+    personas[index] = persona;
+    await storeData(personas);
+  }
+};
+
+export const eliminarPersona = async (id) => {
+  let personas = await getPersonas();
+  if (!personas) {
+    return;
+  }
+
+  personas = personas.filter((p) => p.id !== id);
+  await storeData(personas);
+};
 const getData = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('personas');
