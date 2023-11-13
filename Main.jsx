@@ -10,6 +10,8 @@ import ReservaDeTurnos from "./src/screens/ReservaDeTurnos";
 import CategoriaNew from "./src/screens/Categorias/CategoriaNew";
 import CategoriaEditar from "./src/screens/Categorias/CategoriaEditar";
 import PacienteNew from "./src/screens/Pacientes/PacienteNew";
+import FichasClinicas from "./src/screens/Fichas/Fichas";
+import FichasClinicasNew from "./src/screens/Fichas/FichasNew";
 
 const Main = () => {
     return (
@@ -24,7 +26,9 @@ const Main = () => {
                     <Route path="/pacientes/agregar" element={<PacienteNew />} />
                     <Route path='/doctores' element={<Doctores />} />
                     <Route path='/reserva-turnos' element={<ReservaDeTurnos />} />
-                    <Route path='*' element={<Navigate to='/'/>} />
+                    <Route path="/fichas-clinicas" element={<FichasClinicas />} />
+                    <Route path='/fichas-clinicas/agregar' element={<FichasClinicasNew />} />
+                    <Route path='*' element={<Navigate to='/' />} />
                 </Routes>
             </View>
         </SafeAreaView>

@@ -10,5 +10,9 @@ export const menuItems = [
     {
       name: "Reserva de Turnos",
       route: "/reserva-turnos"
+    },
+    {
+      name: "Fichas clinicas",
+      route: "/fichas-clinicas"
     }
   ];

@@ -28,6 +28,16 @@ const storeData = async (value) => {
   }
 };
 
+export const getDoctores = async () => {
+  const personas = await getData();
+  return personas.filter((persona) => persona.esDoctor);
+};
+
+export const getPacientes = async () => {
+  const personas = await getData();
+  return personas.filter((persona) => !persona.esDoctor);
+}
+
 const getData = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('personas');
@@ -35,4 +45,7 @@ const getData = async () => {
   } catch (e) {
     console.log(e);
   }
+
+
+
 };
