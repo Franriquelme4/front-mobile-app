@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-native';
 export default function CategoriaNew() {
   const [categoryName, setCategoryName] = useState('');
   const navigation = useNavigate();
-  const submitForm = () => {
+  const submitForm = async () => {
     if (categoryName != "") {
-      saveCategoria(categoryName);
+      await saveCategoria(categoryName);
       navigation("/categorias");
     }
   }

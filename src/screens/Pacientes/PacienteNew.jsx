@@ -11,7 +11,7 @@ export default function PacienteNew() {
   const [cedula, setCedula] = useState('');
   const [esDoctor, setEsDoctor] = useState(false);
   const navigation = useNavigate(); 
-  const submitForm = () => {
+  const submitForm = async () => {
     const persona = {
       nombre,
       apellido,
@@ -20,7 +20,7 @@ export default function PacienteNew() {
       cedula,
       esDoctor,
     };
-    savePersona(persona);
+    await savePersona(persona);
     navigation('/pacientes');
   };
 
