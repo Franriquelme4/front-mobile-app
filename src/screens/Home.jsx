@@ -1,7 +1,9 @@
 import { Heading, View } from 'native-base'
 import HomeListItem from '../components/HomeListItem'
-import menuItems from '../constants/menuItems'
+import {menuItems} from '../constants/menuItems'
 
+
+// console.log(menuItems,"menu items");
 export default function Home(){
     return <View>
         <Heading>Menu</Heading>

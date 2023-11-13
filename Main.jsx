@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView } from "react-native";
 import { Route, Navigate, Routes } from 'react-router-native';
-import Categorias from "./src/screens/Categorias";
+import Categorias from "./src/screens/Categorias/Categorias";
 import Home from "./src/screens/Home";
 import { View } from "native-base";
 import Pacientes from "./src/screens/Pacientes";
