@@ -7,7 +7,7 @@ import PacienteEditarModal from './PacienteEditarModal';
 export default function Pacientes() {
   const [personas, setPersonas] = useState([]);
   const navigate = useNavigate();
-
+  const navigation = useNavigate()
   const handleModalClose = () => {
     // Cierra la modal
     setModalVisible(false);
@@ -19,6 +19,7 @@ export default function Pacientes() {
     setSelectedPersona(persona);
     setModalVisible(true);
   };
+
   useEffect(() => {
     const fetchPersonas = async () => {
       const data = await getPersonas();
@@ -27,8 +28,15 @@ export default function Pacientes() {
 
     fetchPersonas();
   }, []);
-  const handleEliminar = async () => {
-    await eliminarPersona(persona.id);
+  const handleEliminar = async (id) => {
+    await eliminarPersona(id);
+    const fetchPersonas = async () => {
+      const data = await getPersonas();
+      setPersonas(data || []);
+    };
+
+    fetchPersonas();
+    navigation('/pacientes');
   };
   return (
     <ScrollView>
@@ -52,7 +60,7 @@ export default function Pacientes() {
                 Editar
               </Button>
 
-              <Button  colorScheme="primary" title="Eliminar" onPress={() => eliminarPersona(persona.id)} color="red" >
+              <Button  colorScheme="primary" title="Eliminar" onPress={() => handleEliminar(persona.id)} color="red" >
                 Eliminar
               </Button>
             </View>
@@ -60,12 +68,7 @@ export default function Pacientes() {
         </View>
         
       </View>
-      <PacienteEditarModal
-        isOpen={modalVisible}
-        onClose={handleModalClose}
-        persona={selectedPersona}
-        onEdit={handleModalClose}
-      />
+      
     </ScrollView>
 
 
